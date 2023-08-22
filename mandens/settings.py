@@ -32,7 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-georgieeggl-businesslis-bms7ws66w8d.ws-eu104.gitpod.io',
                  'online-disposal-form.herokuapp.com',
-                  'localhost',   ]
+                  'localhost',
+                  'online-disposal-form-c3c0cc829bfc.herokuapp.com']
 
 
 # Application definition
