@@ -5,6 +5,6 @@ from .models import Business
 
 class BusinessList(generic.ListView):
     model = Business
-    queryset = Business.order_by('price')
+    queryset = Business.objects.order_by('created_on')
     template_name = 'index.html'
     

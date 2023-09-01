@@ -47,3 +47,7 @@ class Business(models.Model):
     price = models.IntegerField()
     featured_image = CloudinaryField('image', default='placeholder')
     vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, related_name="businesses") 
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_on']
