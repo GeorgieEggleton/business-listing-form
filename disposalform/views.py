@@ -15,15 +15,17 @@ class BusinessList(generic.ListView):
 class VendorInput(View):
 
     def get(self, request, username, *args, **kwargs):
-    vendor = Vendor.object.get(username=username)
+        
+        
+        vendor = Vendor.objects.get(username="SparkyDoo")
 
-    return render(
-        request,
-        "vendor_input.html"/
-        {
-            "vendor" : vendor
-            "VendorForm" : VendorForm()
-        },
+        return render(
+            request,
+            "vendor_input.html",
+            {
+                "vendor" : vendor,
+                "VendorForm" : VendorForm()
+            },
     )
 
  
