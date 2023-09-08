@@ -5,6 +5,7 @@ from cloudinary.models import CloudinaryField #tools for inserting Cloudinary to
 
 
 class Vendor(models.Model):
+    username = models.CharField(max_length=200, unique=True)
     email = models.EmailField(unique=True)
     title = models.CharField(max_length=10)
     first_name = models.CharField(max_length=50)
@@ -21,7 +22,7 @@ class Vendor(models.Model):
         ordering = ['created_on'] #order by asending order based on created on 
 
     def __str__(self):
-        return f" {self.first_name}  {self.last_name} - {self.email}"
+        return f" {self.first_name}  {self.last_name}"
 
 
 
@@ -41,7 +42,7 @@ class Business(models.Model):
     menu = models.TextField()
     accommodation = models.BooleanField(default=False)
     bedrooms = models.IntegerField()
-    bathroms = models.IntegerField()
+    bathrooms = models.IntegerField()
     equipment = models.TextField()
     deliveries = models.BooleanField(default=False)
     price = models.IntegerField()

@@ -1,142 +1,90 @@
-body {
-    background-color: #F9FAFC;
+.navbar {
+    background-color: #013144;
+
 }
 
-.brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #4A4A4F;
+#logo{
+    width: 30%;
 }
 
-.red-o {
-    color: #E84610;
+.business_list_container{
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+
 }
 
-.thin {
-    font-weight: 300;
+#business_list{
+    display: block;
+    width: 80%;
+    
 }
 
-.light-bg {
-    background-color: #fff;
+.accordion-body{
+    background-color: #f1f1f1;
 }
 
-.dark-bg {
-    background-color: #445261;
+
+
+label {
+    display: block;    
+    padding: 8px 22px;
+    margin: 0 0 1px 0;
+    cursor: pointer;
+    background: #6AAB95;
+    border-radius: 3px;
+    color: #FFF;
+    transition: ease .5s;
 }
 
-.main-bg {
-    background-color: #F9FAFC;
+label:hover {
+    background: #4E8774;
 }
 
-.card {
-    border: none;
-    background-color: transparent;
+.content {
+    background: #E2E5F6;
+    padding: 10px 25px;
+    border: 1px solid #A7A7A7;
+    margin: 0 0 1px 0;
+    border-radius: 3px;
 }
 
-.image-container {
-    position: relative;
+input + label + .content {
+    display: none;
 }
 
-.image-flash {
-    position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #23BBBB;
+input:checked + label + .content {
+    display: block;
 }
 
-.author {
-    color: white;
-    margin: 4px;
-    text-transform: uppercase;
+p {
+    color: #013144;
 }
 
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
+#business-name {
+    color: #18b0a6;
 }
 
-.masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
+i {
+    color: #18b0a6;
+}
+.tick {
+    color: rgb(13, 209, 13);
 }
 
-.masthead-image {
-    position: relative;
-    overflow: hidden;
+.cross{
+    color: red;
 }
 
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
+#business-name-detail{
+    color: #777575;
+    display: block;
 }
 
-.post-link {
-    text-decoration: none;
-    color: #445261;
+.fa-bath {
+    padding-left: 15px;;
 }
 
-.post-link:hover,
-.page-link {
-    color: #E84610;
-}
-
-.post-title {
-    margin-top: 20%;
-    margin-left: 5%;
-}
-
-.post-subtitle {
-    margin-left: 5%;
-    color: lightgray;
-}
-
-.btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
-}
-
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
-}
-
-.link {
-    color: #23BBBB;
-    text-decoration: none;
-}
-
-.link:hover,
-.link:active {
-    color: #445261;
-    text-decoration: underline;
-}
-
-.btn-like {
-    color: #E84610;
-    border: none;
-    background: transparent;
-}
-
-.btn-like:hover,
-.btn-like:active {
-    color: #E84610;
-    background: transparent;
-    border: none;
+.label {
+    color:#18b0a6;
 }
