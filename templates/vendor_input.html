@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
+{% load crispy_forms_tags %}
 
-<div>
+
+<div id="vendor-form">
    {{ vendor }} <br>
-   {{ vendor.username }} <br>
-   {{ vendor.first_name}}
-
-   <form method="post" style="margin-top: 1.3em;">
-      {{ comment_form | crispy }}
+   {{ vendor.email }} <br>
+   
+   <form id="vendor-form" method="post" style="margin-top: 1.3em;">
+      {{ vendor_form | crispy }}
       {% csrf_token %}
       <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-   </form>
-   
+  </form>
+
 </div>
 
 
