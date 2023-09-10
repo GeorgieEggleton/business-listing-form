@@ -14,10 +14,15 @@ class BusinessList(generic.ListView):
 
 class VendorInput(View):
 
-    def get(self, request, username, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
+        
+        if request.user.is_authenticated(): # check to see if the user is logged in
+            try:  # This will check if the "Vendor.objects.get" command does not throw an error
+                vendor = Vendor.objects.get(username = request.user.get_username())  # this will look for the variable username in the "Vendor" table 
+            except Vendor.DoesNotExist: # if the record does not exist in the "Vendor" database return text below 
+                vendor = "Vendor Does Not Exist" #text assigned to variable vendor if the record "username" doesn not exist 
         
         
-        vendor = Vendor.objects.get(username="SparkyDoo")
 
         return render(
             request,
