@@ -14,15 +14,17 @@
 To see your business details please login. If want to create a new listing please 
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 
-
-<form class="login" method="POST" action="{% url 'account_login' %}">
+<div id="outer-container">
+<div id='login-form-container'>
+<form id="login-fields" class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
   {{ form.as_p }}
   {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  <input class="login-inputs" type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
 
   <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
 </form>
-
+</div>
+</div>
 {% endblock %}

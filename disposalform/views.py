@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404 
 from django.views import generic, View 
 from .models import Business, Vendor
-from .forms import VendorForm
+from .forms import VendorForm, BusinessForm
 from django.shortcuts import render
 from django.contrib.auth.models import User
 
@@ -65,6 +65,24 @@ class VendorInput(View):
                 "vendor_form" : VendorForm()
             },
         ) 
+
+
+class BusinessInput(View):
+
+    def get(self, request, *args, **kwargs):
+        
+       #if request.user.is_authenticated: # check to see if the user is logged in
+
+        return render(
+            request,
+            "business_input.html",
+            {
+                "business_form" : BusinessForm()
+            },
+    )
+
+
+        
 
  
 

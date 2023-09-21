@@ -8,16 +8,41 @@
 }
 
 .business_list_container{
+    
+    padding-top: 25px;
+}
+
+#outer-container{
     display: flex;
     justify-content: center;
-    padding-top: 25px;
+    align-items: center;
+}
 
+.login{
+    padding-top: 10px;
+}
+
+
+#login-form-container{
+    width: 75%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    background-color: #013144;
+    border-radius: 5px;
+}
+
+#login-fields{
+    width: 70%;
+}
+
+.login-inputs{
+    background-color: red;
 }
 
 #business_list{
     display: block;
-    width: 80%;
-    
+    width: 80%;   
 }
 
 .accordion-body{
@@ -27,14 +52,7 @@
 
 
 label {
-    display: block;    
-    padding: 8px 22px;
-    margin: 0 0 1px 0;
-    cursor: pointer;
-    background: #6AAB95;
-    border-radius: 3px;
-    color: #FFF;
-    transition: ease .5s;
+    
 }
 
 label:hover {
@@ -89,7 +107,45 @@ i {
     color:#18b0a6;
 }
 
+#text-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#opening-text{
+    padding-top: 25px;
+    width: 50%;
+    text-align: center;
+    color: #555454;
+    font-family: Tajawal, sans-serif;
+}
+
+
+
+
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    
+}
+
+
 #vendor-form{
     color: #18b0a6;
-    width: 50%;
+    width: 65%;
+    
+
+}
+
+#test-style{
+    height: 20px;
+    width: 20px;
+    background-color: red;
+}
+
+.subtext{
+    font-size: small;
+    color:#18b0a6
 }
