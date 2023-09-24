@@ -90,15 +90,15 @@ class BusinessInput(View):
             business.save()
         else: 
             Error = "we are not in the if statement"
-        #return render(
-        #    request,
-        #    "business_input.html",
-        #   {
-        #        "vendor" : vendor,
-        #        "vendor_form" : VendorForm(),
-        #        "error" : Error
-        #    },
-        #) 
+        return render(
+           request,
+           "business_input.html",
+            {
+
+                "business_form" : BusinessForm(),
+                "error" : Error
+            },
+        ) 
 
 
 
