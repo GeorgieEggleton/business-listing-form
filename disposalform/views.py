@@ -82,7 +82,7 @@ class BusinessInput(View):
             #except Vendor.DoesNotExist: 
              #   vendor = "Vendor Does Not Exist" 
         
-        business_form = BusinessForm(data=request.POST)  
+        business_form = BusinessForm(request.POST, request.FILES)  
         if business_form.is_valid(): 
             Error = "we are in the if statement!!!"
             business = business_form.save(commit=False)
@@ -94,8 +94,7 @@ class BusinessInput(View):
            request,
            "business_input.html",
             {
-
-                "business_form" : BusinessForm(),
+                "business_form" : BusinessForm(data=request.POST),
                 "error" : Error
             },
         ) 

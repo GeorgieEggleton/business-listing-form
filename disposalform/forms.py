@@ -1,5 +1,6 @@
 from .models import Vendor, Business
 from django import forms 
+from cloudinary.forms import CloudinaryFileField
 
 
 class VendorForm(forms.ModelForm):
