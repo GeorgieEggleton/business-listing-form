@@ -37,7 +37,7 @@
                                 <button type="submit" name="blogpost_id" value="delete" class="btn-like"><i class="fa-solid fa-trash"></i></button>                            
                             </form>
 
-                            <form class="d-inline" action="{% url 'businessinput' business.id %}" method="POST">
+                            <form class="d-inline" action="{% url 'businessupdate' business.id %}" method="GET">
                               {% csrf_token %}
                               <button type="submit" name="blogpost_id" value="delete" class="btn-like"><i class="fa-solid fa-pencil"></i></button>                            
                           </form>
