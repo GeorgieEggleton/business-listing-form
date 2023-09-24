@@ -8,7 +8,6 @@ class VendorForm(forms.ModelForm):
         model = Vendor
         fields = (
         'title',
-        'email',
         'first_name',
         'last_name',
         'address_line1',
@@ -20,9 +19,18 @@ class VendorForm(forms.ModelForm):
         )
 
 class BusinessForm(forms.ModelForm):
-
+    date_bought = forms.DateField(
+        widget=forms.widgets.DateInput(attrs={'type': 'date'}),
+        label = "What date did you take ownership of the business?"
+    )
+    date_est = forms.DateField(
+        widget=forms.widgets.DateInput(attrs={'type': 'date'}),
+        label = "Approximately when was the site established as a Fish & Chip shop?"
+    )
+    
     class Meta:
         model = Business
+
         fields = (
             'business_name',
             'business_address_line1',
@@ -58,8 +66,6 @@ class BusinessForm(forms.ModelForm):
         self.fields['takings'].label = "What is the average weekly takings of the business?"
         self.fields['deliveries'].label = "Do you offer home deliveries?"
         self.fields['menu'].label = "Menu summary"
-        self.fields['date_bought'].label = "What date did you take ownership of the business?"
-        self.fields['date_est'].label = "Approximately when was the site established as a Fish & Chip shop?"
         self.fields['equipment'].label = "Equipment Summary"
         self.fields['accommodation'].label = "Is there any accomodation included with the business?"
         self.fields['bedrooms'].label = "Number of bedrooms?"

@@ -40,29 +40,28 @@ class VendorInput(View):
                 vendor = Vendor.objects.get(username = request.user.get_username())  # this will look for the variable username in the "Vendor" table 
             except Vendor.DoesNotExist: # if the record does not exist in the "Vendor" database return text below 
                 vendor = "Vendor Does Not Exist" #text assigned to variable vendor if the record "username" doesn not exist 
-
         
- 
-       #  post = get_object_or_404(queryset, slug=slug)
-      
+        #Take the information typed by the user in the form and create an instance of the class "VendorForm" from the forms.py file.  
+        #This will be called "vendorform" 
+        vendor_form = VendorForm(data=request.POST)  
         
-        vendor_form = VendorForm(data=request.POST)
-        vendor_form.instance.email = "ddddd"
-        if vendor_form.is_valid():
-            
-            vendor_form.instance.username = request.user.username
-            VendorUpdate = vendor_form.save(commit=False)
-            VendorUpdate.post = post
-            comment.save()
+        if vendor_form.is_valid(): #if crispy forms thinks that the user input is "valid" i.e. if the date is in in the wrong format, or all the fields are not complete
+            Error = "we are in the if statement!!!"
+            #vendor_form.instance.username = request.user.username
+            #vendor_form.instance.email = request.user.email
+            #vendor = vendor_form.save(commit=False)
+            #vendor.post = post
+            #vendor.save()
         else:
-            VendorForm = CommentForm() # if form invalid return empty form    
-
+            #vender_form = VendorForm() # if form invalid return empty form    
+            Error = "we are not in the if statement"
         return render(
             request,
             "vendor_input.html",
             {
                 "vendor" : vendor,
-                "vendor_form" : VendorForm()
+                "vendor_form" : VendorForm(),
+                "error" : Error
             },
         ) 
 
