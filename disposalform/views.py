@@ -74,7 +74,31 @@ class BusinessInput(View):
 
         
 
- 
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated: 
+            vendor = get_object_or_404(Vendor, username=request.user.get_username())
+            #try:  
+            #   vendor = Vendor.objects.get(username = request.user.get_username())  
+            #except Vendor.DoesNotExist: 
+             #   vendor = "Vendor Does Not Exist" 
+        
+        business_form = BusinessForm(data=request.POST)  
+        if business_form.is_valid(): 
+            Error = "we are in the if statement!!!"
+            business = business_form.save(commit=False)
+            business.vendor = vendor
+            business.save()
+        else: 
+            Error = "we are not in the if statement"
+        #return render(
+        #    request,
+        #    "business_input.html",
+        #   {
+        #        "vendor" : vendor,
+        #        "vendor_form" : VendorForm(),
+        #        "error" : Error
+        #    },
+        #) 
 
 
 
