@@ -31,7 +31,21 @@
                             src=" {{ business.featured_image.url }}">
                         </div>
                         <div class="col-sm-5">
-                            <h3 id="business-name">{{ business.business_name }}</h3>
+                            <h3 id="business-name">{{ business.business_name }}</h3> 
+                            <form class="d-inline" action="{% url 'deletebusiness' business.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" name="blogpost_id" value="delete" class="btn-like"><i class="fa-solid fa-trash"></i></button>                            
+                            </form>
+
+                            <form class="d-inline" action="{% url 'businessinput' business.id %}" method="POST">
+                              {% csrf_token %}
+                              <button type="submit" name="blogpost_id" value="delete" class="btn-like"><i class="fa-solid fa-pencil"></i></button>                            
+                          </form>
+                            
+                            
+                           
+                            
+                            
                             <p>{{ business.business_address_line1 }}, {{ business.business_address_line2 }}, {{ business.business_county }}, {{ business.business_postcode }} </p>
                             <h6> <i class="fa-solid fa-sack-dollar"></i> Weekly Takings: £{{ business.takings }}</h6>
                             <h6> <i class="fa-solid fa-house"></i> Tenure: {{ business.tenure }}</h6>
@@ -80,5 +94,34 @@
 {% endif %}
 {% endfor %}
 <script src="https://kit.fontawesome.com/ec4c8d1bc4.js" crossorigin="anonymous"></script>
+<script>
+    function deleteBusiness() { 
+        fetch('/vendorinput/') 
+            .then(response => response.json()) 
+            .then(data => console.log(data)) 
+            .catch(error => console.error(error)); 
+    } 
+</script>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 {%endblock%}

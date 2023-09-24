@@ -11,6 +11,11 @@ class BusinessList(generic.ListView):
     queryset = Business.objects.order_by('created_on')
     template_name = 'index.html'
 
+    def delete(request, id):
+        member = Member.objects.get(id=id)
+        member.delete()
+        return HttpResponseRedirect(reverse('index'))
+
 
 
 class VendorInput(View):
@@ -74,7 +79,7 @@ class BusinessInput(View):
 
         
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, id *args, **kwargs):
         if request.user.is_authenticated: 
             vendor = get_object_or_404(Vendor, username=request.user.get_username())
             #try:  
@@ -101,3 +106,24 @@ class BusinessInput(View):
 
 
 
+
+
+class DeleteBusiness(View):
+    
+    def post(self, request, id):
+        
+        SelectedBuisness = get_object_or_404(Business, id=id) 
+        if request.user.is_authenticated: 
+            if request.user.get_username() == SelectedBuisness.vendor.username:
+                SelectedBuisness.delete() 
+                ConfirmDelete = "Deleted"     
+
+        return render(
+           request,
+           'delete-business.html',
+            {
+                
+                "business" : SelectedBuisness,
+                "confirmdelete" : ConfirmDelete
+            },
+        ) 
