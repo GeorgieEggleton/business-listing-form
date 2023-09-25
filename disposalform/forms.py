@@ -28,6 +28,7 @@ class BusinessForm(forms.ModelForm):
         widget=forms.widgets.DateInput(attrs={'type': 'date'}),
         label = "Approximately when was the site established as a Fish & Chip shop?"
     )
+
     
     class Meta:
         model = Business

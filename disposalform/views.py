@@ -4,6 +4,7 @@ from .models import Business, Vendor
 from .forms import VendorForm, BusinessForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from datetime import datetime
 
 
 class BusinessList(generic.ListView):
@@ -143,10 +144,11 @@ class BusinessUpdate(View):
         
         business_form = BusinessForm(request.POST, request.FILES)  
         if business_form.is_valid(): 
-            
             Error = "we are in the if statement!!!"
             business = business_form.save(commit=False)
             business.vendor = vendor
+            business.id = id
+            business.created_on = datetime.now()
             business.save()
         else: 
             Error = "we are not in the if statement"

@@ -4,9 +4,9 @@ from .models import Vendor, Business
 
 @admin.register(Vendor)
 class VendorAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name',)
+    list_display = ('id', 'first_name', 'last_name',)
 
 
 @admin.register(Business)
 class BusinessAdmin(admin.ModelAdmin):
-    list_display = ('business_name', 'business_postcode', 'vendor')
+    list_display = ('id', 'business_name', 'business_postcode', 'vendor')
