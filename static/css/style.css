@@ -7,9 +7,48 @@
     width: 30%;
 }
 
+#signup-form-container{
+    width: 75%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    font-family: Tajawal, sans-serif;
+}
+
+
+
+
+#practice-inner{
+    background-color: green;
+    width: 50%;
+    height: 15px;
+    margin: auto;
+   
+}
+
+.signup{
+
+}
+
+.main-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    padding-top: 10px;
+    width: 85%;
+    display: block;
+    text-align: center;
+}
+
 .business_list_container{
-    
     padding-top: 25px;
+    display: flex;
+    justify-content: center;
 }
 
 #outer-container{
@@ -36,9 +75,6 @@
     width: 70%;
 }
 
-.login-inputs{
-    background-color: red;
-}
 
 #business_list{
     display: block;
@@ -47,16 +83,6 @@
 
 .accordion-body{
     background-color: #f1f1f1;
-}
-
-
-
-label {
-    
-}
-
-label:hover {
-    background: #4E8774;
 }
 
 .content {
@@ -113,36 +139,26 @@ i {
     justify-content: center;
 }
 
-#opening-text{
+.opening-text{
+    margin: auto;
     padding-top: 25px;
-    width: 50%;
+    padding-bottom: 25px;
+    width: 75%;
     text-align: center;
     color: #555454;
     font-family: Tajawal, sans-serif;
 }
 
 
-
-
-
 .form-container{
     display: flex;
     justify-content: center;
-    
 }
 
 
 #vendor-form{
     color: #18b0a6;
     width: 65%;
-    
-
-}
-
-#test-style{
-    height: 20px;
-    width: 20px;
-    background-color: red;
 }
 
 .subtext{

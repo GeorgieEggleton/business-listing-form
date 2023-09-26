@@ -68,6 +68,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
+ACCOUNT_EMAIL_REQUIRED = 'True'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
