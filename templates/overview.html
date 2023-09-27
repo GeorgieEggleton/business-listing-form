@@ -25,7 +25,11 @@
         <p class="overview-info">{{ vendor.address_line2 }}</p>
         <p class="overview-info">{{ vendor.county }}</p>
         <p class="overview-info">{{ vendor.postcode }}</p>
-        <p class="subtext">Edit <i class="fa-solid fa-pencil"></i></p>
+        <form class="d-inline" action="{% url 'vendorupdate' vendor.id %}" method="GET">
+          {% csrf_token %}
+          <button type="submit" name="blogpost_id" value="delete" class="btn-like"><p class="subtext">Edit <i class="fa-solid fa-pencil"></i></p></button>                            
+      </form>
+        
       </div>
   </div>
 </div>
@@ -128,7 +132,8 @@
 </div>
 {% endif %}
 {% endfor %}
-<div><a class="btn btn-light full-width" href="#"><i class="fa-solid fa-plus"></i> Add a new Business</a></div>
+
+<div><a class="btn btn-light full-width" href="{% url 'businessinput' %}"><i class="fa-solid fa-plus"></i> Add a new Business</a></div>
 <script src="https://kit.fontawesome.com/ec4c8d1bc4.js" crossorigin="anonymous"></script>
 <script>
     function deleteBusiness() { 
