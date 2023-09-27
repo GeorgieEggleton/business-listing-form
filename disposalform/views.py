@@ -7,6 +7,15 @@ from django.contrib.auth.models import User
 from datetime import datetime
 
 
+class Home(View): 
+    def get (self, request, *args, **kwargs):
+        return render(
+                    request,
+                    'index.html'
+                )
+
+
+
 class BusinessList(generic.ListView):
     model = Business
     queryset = Business.objects.order_by('created_on')
@@ -25,16 +34,19 @@ class VendorInput(View):
             try:  # This will check if the "Vendor.objects.get" command does not throw an error
                 vendor = Vendor.objects.get(username = request.user.get_username())  # this will look for the variable username in the "Vendor" table 
             except Vendor.DoesNotExist: # if the record does not exist in the "Vendor" database return text below 
-                vendor = "Vendor Does Not Exist" #text assigned to variable vendor if the record "username" doesn not exist 
+                vendor = "" #text assigned to variable vendor if the record "username" doesn not exist 
 
-        return render(
-            request,
-            "vendor_input.html",
-            {
-                "vendor" : vendor,
-                "vendor_form" : VendorForm()
-            },
-    )
+            return render(
+                request,
+                "vendor_input.html",
+                {
+                    "vendor" : vendor,
+                    "vendor_form" : VendorForm()
+                },
+            )    
+        else: 
+            return redirect("/accounts/login")         
+    
 
     def post(self, request, *args, **kwargs):
         if request.user.is_authenticated: # check to see if the user is logged in
@@ -79,18 +91,12 @@ class BusinessInput(View):
                 )    
         else:
             return redirect("/accounts/login")    
-
-
-
         
 
     def post(self, request, *args, **kwargs):
         if request.user.is_authenticated: 
             vendor = get_object_or_404(Vendor, username=request.user.get_username())
-            #try:  
-            #   vendor = Vendor.objects.get(username = request.user.get_username())  
-            #except Vendor.DoesNotExist: 
-             #   vendor = "Vendor Does Not Exist" 
+        
         
         business_form = BusinessForm(request.POST, request.FILES)  
         if business_form.is_valid(): 
@@ -137,10 +143,7 @@ class BusinessUpdate(View):
     def post(self, request, id, *args, **kwargs):
         if request.user.is_authenticated: 
             vendor = get_object_or_404(Vendor, username=request.user.get_username())
-            #try:  
-            #   vendor = Vendor.objects.get(username = request.user.get_username())  
-            #except Vendor.DoesNotExist: 
-             #   vendor = "Vendor Does Not Exist" 
+          
         
         business_form = BusinessForm(request.POST, request.FILES)  
         if business_form.is_valid(): 
@@ -162,10 +165,6 @@ class BusinessUpdate(View):
         ) 
 
 
-
-
-
-
 class DeleteBusiness(View):
     
     def post(self, request, id):
@@ -185,3 +184,28 @@ class DeleteBusiness(View):
                 "confirmdelete" : ConfirmDelete
             },
         ) 
+
+
+
+class Overview(View):
+    def get (self, request, *args, **kwargs):
+        if request.user.is_authenticated: 
+            try:  
+                vendor = Vendor.objects.get(username = request.user.get_username()) 
+                business_list = Business.objects.all()
+                return render(
+                    request,
+                    'overview.html',
+                        {
+                            "business_list" : business_list,
+                            "vendor" : vendor
+                        },
+                )
+            except Vendor.DoesNotExist: 
+                return redirect("vendorinput") 
+        else: 
+            return redirect("/accounts/login")     
+
+
+
+ 

@@ -1,6 +1,64 @@
+.hero-image-container{
+    width: 100%;
+    height: 500px;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+#hero-image {
+    width: 100%;
+    height: 100%;
+    background: url(/static/images/hero-image.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.hero-text-box{
+    margin-left: 15px;
+    padding: 20px;
+    letter-spacing: 2px;
+    color: #fff;
+    width: 75%;
+    background-color: rgba(0, 49, 69, 0.7);
+    top: 100px;
+    position: absolute;
+}
+
+#hero-header{
+    color: #fff;
+    font-family: Tajawal, sans-serif;
+    font-size: medium;
+    padding-top: 15px;
+}
+
+.hero-text{
+    color: #fff;
+    font-family: Tajawal, sans-serif;
+    font-size: small; 
+    padding-top: 15px;  
+}
+
 .navbar {
     background-color: #013144;
 
+}
+
+.full-width{
+    width: 100%;
+}
+
+#strip{
+    width: 100%;
+    height: 5px;
+    background-color: #1bb1a6;
+}
+
+.short-strip{
+    width: 25%;
+    height: 2px;
+    background-color: #1bb1a6;
+    margin: auto;
+    margin-bottom: 20px;
 }
 
 #logo{
@@ -8,28 +66,14 @@
 }
 
 #signup-form-container{
-    width: 75%;
-    height: 75%;
-    display: flex;
-    justify-content: center;
     border-radius: 5px;
     font-family: Tajawal, sans-serif;
 }
 
-
-
-
-#practice-inner{
-    background-color: green;
-    width: 50%;
-    height: 15px;
-    margin: auto;
-   
-}
-
 .signup{
-
+    display: block;
 }
+
 
 .main-container{
     width: 100%;
@@ -46,7 +90,6 @@
 }
 
 .business_list_container{
-    padding-top: 25px;
     display: flex;
     justify-content: center;
 }
@@ -59,20 +102,6 @@
 
 .login{
     padding-top: 10px;
-}
-
-
-#login-form-container{
-    width: 75%;
-    height: 75%;
-    display: flex;
-    justify-content: center;
-    background-color: #013144;
-    border-radius: 5px;
-}
-
-#login-fields{
-    width: 70%;
 }
 
 
@@ -93,16 +122,37 @@
     border-radius: 3px;
 }
 
-input + label + .content {
-    display: none;
+.overview-label{
+    font-family: Tajawal, sans-serif;
+    font-size: 14px;
+    color: #18b0a6;
+    line-height: 5px;
 }
 
-input:checked + label + .content {
-    display: block;
+.overview-info{
+    font-family: Tajawal, sans-serif;
+    font-size: 14px;
+    color:#777575;
+    line-height: 1px;
 }
 
 p {
     color: #013144;
+}
+
+.accordion-button:not(.collapsed){
+    background-color: #013144;
+    color: #fff;
+}
+
+.accordion-button:focus{
+    background-color: #013144;
+    color: #fff;
+}
+
+.accordion-button{
+    background-color: #013144;
+    color: #fff;
 }
 
 #business-name {
@@ -164,4 +214,49 @@ i {
 .subtext{
     font-size: small;
     color:#18b0a6
+}
+.overview-heading{
+    margin: auto;
+    text-align: center;
+    padding-bottom: 15px;
+    font-size: 20px;
+    font-family: Tajawal, sans-serif;
+    color: #555454;
+}
+
+
+#vendor-info{
+    width: 75%;
+    align-items: center;
+    
+}
+
+.text-area{
+    background-color: white;
+    border: #013144, 1px;
+    padding: 2px;
+    margin: 0, 5px;
+}
+
+/*Screens smaller than 700px*/
+@media only screen and (max-width: 700px) {
+
+    .hero-image-container{
+        width: 100%;
+        overflow: scroll;
+    }
+
+    .hero-text-box{
+        top: 2px;
+        width: 95%;
+        height: auto;
+    }
+
+    #hero-image {
+        width: 100%;
+        height: 120%;
+        background-size: cover;
+    }
+
+
 }

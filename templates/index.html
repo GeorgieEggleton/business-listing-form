@@ -2,126 +2,19 @@
 
 {% block content %}
 
-<div>
-   Welcome back : {{ user.get_username }}
-    {{ business.vendor.username }}
-
-</div>
-
-<h1>Businesses</h1>
-
-<div class="business_list_container">
-
-<div id="business_list">
-{% for business in business_list %}
-{% if user.get_username == business.vendor.username or user.get_username == 'admin' %}
-
-    <div class="accordion">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="heading_{{ business.id }}">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{ business.id }}" aria-expanded="true" aria-controls="collapse_{{ business.id }}">
-            Business : {{ business.business_name }}, {{ business.business_county }} - Vendor: {{ business.vendor }} - Price: £{{ business.price }}
-            </button>
-            </h2>
-            <div id="collapse_{{ business.id }}" class="accordion-collapse collapse " aria-labelledby="heading_{{ business.id }}" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <img class="card-img-top"
-                            src=" {{ business.featured_image.url }}">
-                        </div>
-                        <div class="col-sm-5">
-                            <h3 id="business-name">{{ business.business_name }}</h3> 
-                            <form class="d-inline" action="{% url 'deletebusiness' business.id %}" method="POST">
-                                {% csrf_token %}
-                                <button type="submit" name="blogpost_id" value="delete" class="btn-like"><i class="fa-solid fa-trash"></i></button>                            
-                            </form>
-
-                            <form class="d-inline" action="{% url 'businessupdate' business.id %}" method="GET">
-                              {% csrf_token %}
-                              <button type="submit" name="blogpost_id" value="delete" class="btn-like"><i class="fa-solid fa-pencil"></i></button>                            
-                          </form>
-                            
-                            
-                           
-                            
-                            
-                            <p>{{ business.business_address_line1 }}, {{ business.business_address_line2 }}, {{ business.business_county }}, {{ business.business_postcode }} </p>
-                            <h6> <i class="fa-solid fa-sack-dollar"></i> Weekly Takings: £{{ business.takings }}</h6>
-                            <h6> <i class="fa-solid fa-house"></i> Tenure: {{ business.tenure }}</h6>
-                            
-                            <h6>Is there a Ltd. Company? 
-                                {% if business.ltd_compnay %}
-                                <i class="fa-solid fa-check tick"></i>- {{ business.ltd_compnay_name }}
-                                {% else %}
-                                <i class="fa-solid fa-xmark cross"></i>
-                                {% endif %}
-                            </h6> 
-                            <hr>
-                            <h6>Accomodation</h6>
-                                {% if business.accommodation %}
-                                <div id="accom-detail">
-                                <i class="fa-solid fa-bed"></i> {{ business.bedrooms }}
-                                <i class="fa-solid fa-bath"></i> {{ business.bathroms }}
-                                </div>
-                                {% else %}
-                                <div id="accom-detail"><i class="fa-solid fa-xmark cross"></i>- None</div>
-                                {% endif %}
-                            <hr>
-                        </div>
-                        <h6>Owner</h6>
-                        <div class="row">
-                            <div class="col-sm-6">
-                               <p class="label"> Name:</p> {{ business.vendor.title }} {{ business.vendor.first_name }} {{ business.vendor.last_name }}
-                               <p>Email: {{ business.vendor.email }}</p> 
-                               <p>Phone Number: {{ business.vendor.phone_number }}</p> 
-                               <p>Mobile Number: {{ business.vendor.mobile_number }}</p> 
-                               
-                            </div>
-
-                            <div class="col-sm-6">
-                                <p>Address:</p>
-                                
-                             </div>
-
-                      </div>
-
-                 
-                </div>
-            </div>
+<section class="hero-image-container">
+    <div id="hero-image">
+        <div class="hero-text-box"> 
+            <h1 id="hero-header">THE LEADING FISH & CHIP BUSINESS TRANSFER AGENTS & VALUERS</h1>
+            <P class="hero-text">Established for over 50 years, we have a unique in depth knowledge of all aspects of the trade.</P>
+            <P class="hero-text">We offer a confidential yet highly efficient service to owners of fish and chip businesses whether it is a take away or has restaurant seating. We have close contacts with many people in the trade including the operators that have multiple shops. We pride ourselves on the longstanding nature of many of our client relationships.</P>
+            <P class="hero-text"><strong>In order to list you Fish & Chip Business for sale we need to collect some information regarding both you as the legal owner of the business as well as some trading information on the business.</strong></P>
+        <div>
+            <a class="btn btn-light" href="{% url 'account_signup' %}">Register</a>
+            <a class="btn btn-light" href="{% url 'account_login' %}">Log In</a>
+        </div>
+        </div>
     </div>
-</div>
-{% endif %}
-{% endfor %}
-<script src="https://kit.fontawesome.com/ec4c8d1bc4.js" crossorigin="anonymous"></script>
-<script>
-    function deleteBusiness() { 
-        fetch('/vendorinput/') 
-            .then(response => response.json()) 
-            .then(data => console.log(data)) 
-            .catch(error => console.error(error)); 
-    } 
-</script>
-</div>
+    </section>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          
-        </div>
-      </div>
-    </div>
-  </div>
 {%endblock%}
