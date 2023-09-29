@@ -238,6 +238,16 @@ i {
     margin: 0, 5px;
 }
 
+
+
+
+.btn-like{
+    border: none; 
+}
+
+.btn-edit{
+    background-color: #fff;
+}
 /*Screens smaller than 700px*/
 @media only screen and (max-width: 700px) {
 

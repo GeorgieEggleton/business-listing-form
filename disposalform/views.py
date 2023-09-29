@@ -229,7 +229,7 @@ class VendorUpdate(View):
             vendor = vendor_form.save(commit=False)
             vendor.id = id
             vendor.username = request.user.get_username()
-            vendor.email = vendor.email
+            vendor.email = request.user.email
             vendor.created_on = datetime.now()
             vendor.save()
         else: 

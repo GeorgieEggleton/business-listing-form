@@ -27,7 +27,7 @@
         <p class="overview-info">{{ vendor.postcode }}</p>
         <form class="d-inline" action="{% url 'vendorupdate' vendor.id %}" method="GET">
           {% csrf_token %}
-          <button type="submit" name="blogpost_id" value="delete" class="btn-like"><p class="subtext">Edit <i class="fa-solid fa-pencil"></i></p></button>                            
+          <button type="submit" name="blogpost_id" value="delete" class="btn-like btn-edit"><p class="subtext">Edit <i class="fa-solid fa-pencil"></i></p></button>                            
       </form>
         
       </div>
