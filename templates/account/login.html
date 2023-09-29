@@ -11,20 +11,25 @@
 
 <div class="opening-text">
   <p>{% blocktrans %}Welcome back to Mandens Business listings. </p>
-  <p>To see your business details please login. If want to create a new listing please <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+  <p>To see your business details please login. If you have not yet registered an account please <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 </div>
 
-<div id="main-container">
-  <div id="signup-form-container">
-  <form id="login-fields" class="login" method="POST" action="{% url 'account_login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% if redirect_field_value %}
-    <input class="login-inputs" type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
 
-    <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-  </form>
-</div>
-</div>
+<div class="row">
+  <div class="col-6 mx-auto">
+    <div class="text-center" id="main-container">
+       <div id="signup-form-container">
+          <form id="login-fields" class="login" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if redirect_field_value %}
+            <input class="login-inputs" type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>    
+
 {% endblock %}
