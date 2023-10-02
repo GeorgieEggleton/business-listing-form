@@ -40,7 +40,11 @@
 
 .navbar {
     background-color: #013144;
+}
 
+.navbar-toggler{
+    color: #fff;
+    
 }
 
 .full-width{
@@ -239,8 +243,6 @@ i {
 }
 
 
-
-
 .btn-like{
     border: none; 
 }
@@ -248,6 +250,22 @@ i {
 .btn-edit{
     background-color: #fff;
 }
+
+.footer{
+    width: 100%;
+    height: 100px;
+    background-color: #013144;
+}
+
+.footer-text{
+    font-family: Tajawal, sans-serif;
+    color: #fff;
+    padding-top: 15px;
+    letter-spacing: 5px;
+    text-decoration: none;
+}
+
+
 /*Screens smaller than 700px*/
 @media only screen and (max-width: 700px) {
 
