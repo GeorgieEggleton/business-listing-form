@@ -236,3 +236,5 @@ class VendorUpdate(View):
             Error = "we are not in the if statement"
         return redirect("overview") 
  
+def custom_404(request, exception):
+    return render(request, 'e404.html', status=404) 

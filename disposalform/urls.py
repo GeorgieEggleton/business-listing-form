@@ -10,3 +10,4 @@ urlpatterns = [
     path('businessupdate/<int:id>', views.BusinessUpdate.as_view(), name='businessupdate'),
     path('vendorupdate/<int:id>', views.VendorUpdate.as_view(), name='vendorupdate'), 
 ]
+

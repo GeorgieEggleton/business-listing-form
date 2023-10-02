@@ -21,3 +21,5 @@ urlpatterns = [
     path('', include('disposalform.urls'), name='disposalform_urls'),
     path('accounts/', include('allauth.urls')),
 ]
+
+handler404 = 'disposalform.views.custom_404'
