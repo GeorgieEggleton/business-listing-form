@@ -31,35 +31,36 @@ A link to the live site can be found here -
 
 ### Favicon
 A favicon is used to help the user identify the correct site when they have multiple tabs open. I have used a custom image which is part of the main Mandes logo. 
-![Favicon Screenshot](/static/readme-images/favicon.png)
+![Favicon Screenshot](/docs/readme-images/favicon.png)
 
 
 
 
 ### Home Page
 On first loading the website the user is directed to the homepage. This is styled to look very similar the homepage of the main Mandens website to keep the brand styling continuity and ensure it is easily recognisable to the user. The user has two options, if this is their first time visiting the site they can register and account, or if they have previously done that they can login to edit or delete their business details. 
-![Home Page Screenshot](/static/readme-images/homepage.png)
+![Home Page Screenshot](/docs/readme-images/home.png)
 
 
 ### Registration
 If the user is coming to the site for the first time they will click on the “Register” button. This will direct them to the signup page were they will be able to create their account details. 
-![Registration Screenshot](/static/readme-images/registration.png)
+![Registration Screenshot](/docs/readme-images/registration.png)
 
 ### Login
 If the user is returning to the site having already previously set up their account they will click the “Log In” button. This will redirect them to the singing page where they will just need to enter their username and password. There is also an option to click “Remember Me” it speed up further sign in’s if they are working from the safety of their own private computer. 
-![Login Screenshot](/static/readme-images/login.png)
+![Login Screenshot](/docs/readme-images/login.png)
 
 ### Vendor Details
 After registering for an account the user will then be re-directed to the Vendor Input page. This is where the user will be asked to input the details of the legal owner and vendor of the business. All fields in this section are mandatory fields as all this information will be required by the Admin in order to complete the legal paperwork to sell the business. Once they Have done this and clicked “Submit” They will be re-directed to their own personal overview page. 
-![Vendor Input Screenshot](/static/readme-images/vendor-input.png)
+![Vendor Input Screenshot](/docs/readme-images/vendor-input.png)
 
 ### Overview Page
 The overview page will display to the user all of their personal and business information. In the first instance it will only show the vendor details and below where the businesses will appear is a large button to add a new business. 
-![Overview Vendor Details Screenshot](/static/readme-images/overview-vendor-details.png)
-Once the user has added one or more businesses these will all be displayed on the overview page. I have used accordians to list all the businesses as it is possible that one user could have many businesses for sale. The accordions assure that the page is easy to read and manage. When the accordion for each business is clicked it opens and displays the relevant business information. 
-![Overview Screenshot](/static/readme-images/overview.png)
+![Overview Vendor Details Screenshot](/docs/readme-images/overview-vendor-details.png)
 
-![Open Accordian Screenshot](/static/readme-images/open-business.png)
+Once the user has added one or more businesses these will all be displayed on the overview page. I have used accordians to list all the businesses as it is possible that one user could have many businesses for sale. The accordions assure that the page is easy to read and manage. When the accordion for each business is clicked it opens and displays the relevant business information. 
+![Overview Screenshot](/docs/readme-images/overview.png)
+
+![Open Accordian Screenshot](/docs/readme-images/open-business.png)
 
 
 
