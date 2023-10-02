@@ -18,18 +18,6 @@ class Home(View):
                     )
                 
 
-class BusinessList(generic.ListView):
-    model = Business
-    queryset = Business.objects.order_by('created_on')
-    template_name = 'index.html'
-
-    def delete(request, id):
-        member = Member.objects.get(id=id)
-        member.delete()
-        return HttpResponseRedirect(reverse('index'))
-
-
-
 class VendorInput(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated: # check to see if the user is logged in
@@ -97,12 +85,10 @@ class BusinessInput(View):
             
         business_form = BusinessForm(request.POST, request.FILES)  
         if business_form.is_valid(): 
-            Error = "we are in the if statement!!!"
             business = business_form.save(commit=False)
             business.vendor = vendor
             business.save()
-        else: 
-            Error = "we are not in the if statement"
+        
         return render(
            request,
            "business_input.html",
@@ -111,9 +97,6 @@ class BusinessInput(View):
                 "error" : Error
             },
         ) 
-
-
-
 
 class BusinessUpdate(View):
     def get(self, request, id, *args, **kwargs):
@@ -121,11 +104,15 @@ class BusinessUpdate(View):
         if request.user.is_authenticated: 
             SelectedBusiness = get_object_or_404(Business, id=id)
             if request.user.get_username() == SelectedBusiness.vendor.username:
+                BForm = BusinessForm(instance=SelectedBusiness)
+                
                 return render(
                     request,
                     "business_input.html",
                     {
-                    "business_form" : BusinessForm(instance=SelectedBusiness)
+                    "business_form" : BForm,
+                    "images" : SelectedBusiness.featured_image,
+                    "business" : SelectedBusiness
                     },
                 )
             else:
@@ -133,45 +120,29 @@ class BusinessUpdate(View):
         else:
             return redirect("/accounts/login")    
 
-
-
-        
-
     def post(self, request, id, *args, **kwargs):
         if request.user.is_authenticated: 
             vendor = get_object_or_404(Vendor, username=request.user.get_username())
-          
-        
-        business_form = BusinessForm(request.POST, request.FILES)  
+            existing_business = get_object_or_404(Business, id=id)
+
+        business_form = BusinessForm(request.POST, request.FILES, instance=existing_business)  
         if business_form.is_valid(): 
-            Error = "we are in the if statement!!!"
             business = business_form.save(commit=False)
-            business.vendor = vendor
-            business.id = id
-            business.created_on = datetime.now()
+            #business.vendor = vendor
+            #business.id = id
+            #business.featered_image = SelectedBusiness.featured_image
+            #business.created_on = datetime.now()
             business.save()
-        else: 
-            Error = "we are not in the if statement"
-        return render(
-           request,
-           "business_input.html",
-            {
-                "business_form" : BusinessForm(data=request.POST),
-                "error" : Error
-            },
-        ) 
+        return redirect("/overview") 
 
 
 class DeleteBusiness(View):
-    
-    def post(self, request, id):
-        
+    def post(self, request, id):  
         SelectedBuisness = get_object_or_404(Business, id=id) 
         if request.user.is_authenticated: 
             if request.user.get_username() == SelectedBuisness.vendor.username:
                 SelectedBuisness.delete() 
                 ConfirmDelete = "Deleted"     
-
         return render(
            request,
            'delete-business.html',
@@ -181,8 +152,6 @@ class DeleteBusiness(View):
                 "confirmdelete" : ConfirmDelete
             },
         ) 
-
-
 
 class Overview(View):
     def get (self, request, *args, **kwargs):
@@ -225,7 +194,6 @@ class VendorUpdate(View):
     def post(self, request, id, *args, **kwargs):
         if request.user.is_authenticated: 
             vendor = get_object_or_404(Vendor, username=request.user.get_username())
-        
         vendor_form = VendorForm(request.POST, request.FILES)  
         if vendor_form.is_valid(): 
             Error = "we are in the if statement!!!"

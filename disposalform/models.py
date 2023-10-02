@@ -46,7 +46,7 @@ class Business(models.Model):
     equipment = models.TextField()
     deliveries = models.BooleanField(default=False)
     price = models.IntegerField()
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField('image')
     vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, related_name="businesses") 
     created_on = models.DateTimeField(auto_now_add=True)
 
