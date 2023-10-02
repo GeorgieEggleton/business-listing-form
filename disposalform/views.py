@@ -9,10 +9,13 @@ from datetime import datetime
 
 class Home(View): 
     def get (self, request, *args, **kwargs):
-        return render(
-                    request,
-                    'index.html'
-                )
+        if request.user.is_authenticated: # check to see if the user is logged in
+            return redirect("/overview") 
+        else:
+            return render(
+                        request,
+                        'index.html'
+                    )
                 
 
 class BusinessList(generic.ListView):
@@ -238,3 +241,4 @@ class VendorUpdate(View):
  
 def custom_404(request, exception):
     return render(request, 'e404.html', status=404) 
+
