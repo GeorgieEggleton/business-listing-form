@@ -64,6 +64,37 @@ Once the user has added one or more businesses these will all be displayed on th
 
 ![Open Accordian Screenshot](/docs/readme-images/open-business.png)
 
+### Admin Overview Page
+If you are logged in as the admin the overview page will show all businesses loaded by all users. Instead of loading at the top of the page as per the normal overview page, the Vendor details for each business will be added to each business individually so that the admin can have a complete overview of all the new businesses being added and deal with the appropriate paperwork. 
+![Open Accordian Screenshot](/docs/readme-images/admin-overview.png)
+
+
+# Wireframes
+The heart of the project and the main functionality is the overview page. This is the main area where both the customer and the admin can access, edit, and delete their details.
+![Wireframe](/docs/readme-images/main-design.png) 
+
+# Technologies
+
+
+HTML - The main structure of the website uses HTML.
+CSS The website was styled using custom CSS linked to an external file.
+Gitpod - The website was developed using Gitpod.
+GitHub - The site is hosted on GitHub.
+Font Awesome - Icons for the social media links and the chevrons on the drop down accordions are from Font Awesome
+Tinyjpg - Tiny PNG was used to compress the size of the hero images
+Favicon.io - A favicon was created of the boats logo using favicon.io
+Balsamiq - wireframes were created using Balsamiq
+GitHub Pages - The site is deployed using GitHub Pages The deployment steps taken were:- - In the GitHub repository, go to the settings - In the left hand menu select Pages - Set source to "Deploy from a branch" - In the Branch section set the drop down menus to "main" & "/(root)" - Click 'Save' - Refresh the pge and the link will be displayed at the top.
+
+# Testing
+** Tables of tests **
+
+
+
+# Agile Methodologies
+Throughout the project I used an agile methodology using GitHub’s KanBan board to plan, manage and complete each milestone within the assignment. 
+
+
 
 
 
