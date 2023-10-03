@@ -1,0 +1,157 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="opening-text">
+   You are logged in as: {{ user.get_username }}
+    {{ business.vendor.username }}
+</div>
+
+<div class="business_list_container">
+
+
+<div id="business_list">
+{% for business in business_list %}
+  
+<div class="accordion">
+  <div class="accordion-item">
+      <h2 class="accordion-header" id="heading_{{ business.id }}">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{ business.id }}" aria-expanded="true" aria-controls="collapse_{{ business.id }}">
+      {{ business.business_name }}, {{ business.business_county }} - Price: £{{ business.price }} - Vendor: {{ business.vendor }} 
+      </button>
+      </h2>
+      <div id="collapse_{{ business.id }}" class="accordion-collapse collapse " aria-labelledby="heading_{{ business.id }}" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              <div class="row">
+                  <div class="col-sm-7">
+                      <img class="card-img-top"
+                      src=" {{ business.featured_image.url }}">
+                  </div>
+                  <div class="col-sm-5">
+                      <h3 id="business-name">{{ business.business_name }}</h3> 
+                      <form class="d-inline" action="{% url 'deletebusiness' business.id %}" method="POST">
+                          {% csrf_token %}
+                      
+                      <p>{{ business.business_address_line1 }}, {{ business.business_address_line2 }}, {{ business.business_county }}, {{ business.business_postcode }} </p>
+                      <h6> <i class="fa-solid fa-sack-dollar"></i> Weekly Takings: £{{ business.takings }}</h6>
+                      <h6> <i class="fa-solid fa-house"></i> Tenure: {{ business.tenure }}</h6>
+                      
+                      <h6>Is there a Ltd. Company? 
+                          {% if business.ltd_compnay %}
+                          <i class="fa-solid fa-check tick"></i>- {{ business.ltd_compnay_name }}
+                          {% else %}
+                          <i class="fa-solid fa-xmark cross"></i>
+                          {% endif %}
+                      </h6> 
+                      <h6>Delivery Service? 
+                        {% if business.deliveries %}
+                        <i class="fa-solid fa-check tick"></i>
+                        {% else %}
+                        <i class="fa-solid fa-xmark cross"></i>
+                        {% endif %}
+                    </h6> 
+                      <hr>
+                      <h6>Accomodation</h6>
+                          {% if business.accommodation %}
+                          <div id="accom-detail">
+                          <i class="fa-solid fa-bed"></i> {{ business.bedrooms }}
+                          <i class="fa-solid fa-bath"></i> {{ business.bathrooms }}
+                          </div>
+                          {% else %}
+                          <div id="accom-detail"><i class="fa-solid fa-xmark cross"></i>- None</div>
+                          {% endif %}
+                      <hr>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                       <p> Date Established: {{ business.date_est }}</p>
+                    </div>
+                    <div class="col-sm-6">
+                      <p> Date in your ownership: {{ business.date_bought }}</p>
+                    <div>
+                   </div>
+              </div>
+
+
+                  <div class="row">
+                      <div class="col-sm-6">
+                         <p> Menu summary:</p>
+                         <div class="text-area"> 
+                          {{ business.menu }}
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <p> Equipment:</p>
+                        <div class="text-area"> 
+                         {{ business.equipment }}
+                       </div>
+                     </div>
+                </div>
+                <hr class="section-end">
+                <div class="row">
+                  <div class="col-sm-6">
+                     <p> Owner:</p>
+                     <div class="text-area"> 
+                      <p><span class="label">Name:</span>{{ business.vendor.title }} {{ business.vendor.first_name }} {{ business.vendor.last_name }}</p> 
+                      <p><span class="label">Email:</span> {{ business.vendor.email }}</p> 
+                      <p><span class="label">Phone Number:</span>{{ business.vendor.phone_number }}</p> 
+                      <p><span class="label">Mobile Number: </span>{{ business.vendor.mobile_number }}</p> 
+
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <p></p>
+                    <div class="text-area"> 
+                      <p><span class="label">Address: </span>{{ business.vendor.address_line1 }}</p> 
+                      <p>{{ business.vendor.address_line2 }}</p>
+                      <p>{{ business.vendor.county }}</p>
+                      <p>{{ business.vendor.postcode }}</p>
+                   </div>
+                 </div>
+            </div>
+           
+          </div>
+      </div>
+</div>
+</div>
+{% endfor %}
+
+
+
+
+
+
+
+<script src="https://kit.fontawesome.com/ec4c8d1bc4.js" crossorigin="anonymous"></script>
+<script>
+    function deleteBusiness() { 
+        fetch('/vendorinput/') 
+            .then(response => response.json()) 
+            .then(data => console.log(data)) 
+            .catch(error => console.error(error)); 
+    } 
+</script>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}

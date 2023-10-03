@@ -9,18 +9,20 @@ In order for Mandens to have a more efficient use of the agents time the busines
 The admin (Mandens) will be able to log in and see a full list of all the businesses that are due to be listed with all the required information to generate the legal paperwork needed. 
 
 
-Login Details
+#####Login Details:
 To login and see an example vendor with current businesses listed please use
+
 Username: JohnsFishandChips
 Password: FishShop123
 
 To login as admin and see information of all businesses please use:
+
 Username: Admin
 Password: Firefly2
 
 
 Live site
-A link to the live site can be found here - 
+A link to the live site can be found here - https://online-disposal-form-c3c0cc829bfc.herokuapp.com/
 
 
 *** Mock Up ****

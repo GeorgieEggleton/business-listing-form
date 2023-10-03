@@ -10,7 +10,10 @@ from datetime import datetime
 class Home(View): 
     def get (self, request, *args, **kwargs):
         if request.user.is_authenticated: # check to see if the user is logged in
-            return redirect("/overview") 
+            if request.user.get_username() == 'admin':
+                return redirect("/adminoverview")
+            else: 
+                return redirect("/overview") 
         else:
             return render(
                         request,
@@ -48,22 +51,21 @@ class VendorInput(View):
         #This will be called "vendorform" 
         vendor_form = VendorForm(data=request.POST)  
         if vendor_form.is_valid(): #if crispy forms thinks that the user input is "valid" i.e. if the date is in in the wrong format, or all the fields are not complete
-            Error = "we are in the if statement!!!"
             vendor_form.instance.username = request.user.username
             vendor_form.instance.email = request.user.email
             vendor = vendor_form.save(commit=False)
             vendor.save()
-        else:  
-            Error = "we are not in the if statement"
-        return render(
-            request,
-            "vendor_input.html",
-            {
-                "vendor" : vendor,
-                "vendor_form" : VendorForm(),
-                "error" : Error
-            },
-        ) 
+            return redirect("/overview") 
+        else:    
+            return render(
+                request,
+                "vendor_input.html",
+                {
+                    "vendor" : vendor,
+                    "vendor_form" : VendorForm(),
+                    "error" : Error
+                },
+            ) 
 
 
 class BusinessInput(View):
@@ -128,10 +130,6 @@ class BusinessUpdate(View):
         business_form = BusinessForm(request.POST, request.FILES, instance=existing_business)  
         if business_form.is_valid(): 
             business = business_form.save(commit=False)
-            #business.vendor = vendor
-            #business.id = id
-            #business.featered_image = SelectedBusiness.featured_image
-            #business.created_on = datetime.now()
             business.save()
         return redirect("/overview") 
 
@@ -210,3 +208,19 @@ class VendorUpdate(View):
 def custom_404(request, exception):
     return render(request, 'e404.html', status=404) 
 
+class AdminOverview(View):
+    def get (self, request, *args, **kwargs):
+        if request.user.is_authenticated: 
+            if request.user.get_username() == "admin":  
+                business_list = Business.objects.all()
+                return render(
+                    request,
+                    'admin-overview.html',
+                        {
+                            "business_list" : business_list,
+                        },
+                ) 
+            else: 
+                return redirect("/accounts/login")  
+        else: 
+                return redirect("/accounts/login")         

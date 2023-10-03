@@ -265,6 +265,10 @@ i {
     text-decoration: none;
 }
 
+.section-end{
+    margin-top: 20px;
+}
+
 
 /*Screens smaller than 700px*/
 @media only screen and (max-width: 700px) {
