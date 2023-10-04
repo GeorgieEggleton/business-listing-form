@@ -7,9 +7,10 @@ from django.contrib.auth.models import User
 from datetime import datetime
 
 
+# Hope page view displayed on first load of the site or when logo cicked
 class Home(View): 
     def get (self, request, *args, **kwargs):
-        if request.user.is_authenticated: # check to see if the user is logged in
+        if request.user.is_authenticated:
             if request.user.get_username() == 'admin':
                 return redirect("/adminoverview")
             else: 
@@ -20,14 +21,16 @@ class Home(View):
                         'index.html'
                     )
                 
-
+# Vendor input form. 
+# Called when user logs in for the first time. 
+# Only accessable if logged in. 
 class VendorInput(View):
     def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated: # check to see if the user is logged in
-            try:  # This will check if the "Vendor.objects.get" command does not throw an error
-                vendor = Vendor.objects.get(username = request.user.get_username())  # this will look for the variable username in the "Vendor" table 
-            except Vendor.DoesNotExist: # if the record does not exist in the "Vendor" database return text below 
-                vendor = "" #text assigned to variable vendor if the record "username" doesn not exist 
+        if request.user.is_authenticated: 
+            try: 
+                vendor = Vendor.objects.get(username = request.user.get_username())  
+            except Vendor.DoesNotExist: 
+                vendor = "" 
 
             return render(
                 request,
@@ -48,9 +51,9 @@ class VendorInput(View):
                 vendor = "Vendor Does Not Exist" 
         
         #Take the information typed by the user in the form and create an instance of the class "VendorForm" from the forms.py file.  
-        #This will be called "vendorform" 
+        
         vendor_form = VendorForm(data=request.POST)  
-        if vendor_form.is_valid(): #if crispy forms thinks that the user input is "valid" i.e. if the date is in in the wrong format, or all the fields are not complete
+        if vendor_form.is_valid(): 
             vendor_form.instance.username = request.user.username
             vendor_form.instance.email = request.user.email
             vendor = vendor_form.save(commit=False)
@@ -67,7 +70,9 @@ class VendorInput(View):
                 },
             ) 
 
-
+# Business input form. 
+# Called when user clickes to add a new Business 
+# Only accessable if logged in. 
 class BusinessInput(View):
     def get(self, request, *args, **kwargs):       
         if request.user.is_authenticated: 
@@ -100,6 +105,9 @@ class BusinessInput(View):
             },
         ) 
 
+
+# Loads the Business input form pre-populated with the current busines to be edited. 
+# updates the information on the current busiess 
 class BusinessUpdate(View):
     def get(self, request, id, *args, **kwargs):
        
@@ -134,6 +142,8 @@ class BusinessUpdate(View):
         return redirect("/overview") 
 
 
+# Delete business - called when trash icon clicked on specific business
+#Deletes the current business with unique ID only
 class DeleteBusiness(View):
     def post(self, request, id):  
         SelectedBuisness = get_object_or_404(Business, id=id) 
@@ -151,6 +161,7 @@ class DeleteBusiness(View):
             },
         ) 
 
+# Overview shows the logged in users personal details and details of businesses linked to them
 class Overview(View):
     def get (self, request, *args, **kwargs):
         if request.user.is_authenticated: 
@@ -207,6 +218,11 @@ class VendorUpdate(View):
  
 def custom_404(request, exception):
     return render(request, 'e404.html', status=404) 
+
+
+
+# Admin overview - only accessable by the user logged in as admin
+# Shows all busiesses and the linked vendor
 
 class AdminOverview(View):
     def get (self, request, *args, **kwargs):

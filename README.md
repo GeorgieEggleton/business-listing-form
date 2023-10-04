@@ -73,28 +73,63 @@ If you are logged in as the admin the overview page will show all businesses loa
 The heart of the project and the main functionality is the overview page. This is the main area where both the customer and the admin can access, edit, and delete their details.
 ![Wireframe](/docs/readme-images/main-design.png) 
 
-# Technologies
-
-
-HTML - The main structure of the website uses HTML.
-CSS The website was styled using custom CSS linked to an external file.
-Gitpod - The website was developed using Gitpod.
-GitHub - The site is hosted on GitHub.
-Font Awesome - Icons for the social media links and the chevrons on the drop down accordions are from Font Awesome
-Tinyjpg - Tiny PNG was used to compress the size of the hero images
-Favicon.io - A favicon was created of the boats logo using favicon.io
-Balsamiq - wireframes were created using Balsamiq
-GitHub Pages - The site is deployed using GitHub Pages The deployment steps taken were:- - In the GitHub repository, go to the settings - In the left hand menu select Pages - Set source to "Deploy from a branch" - In the Branch section set the drop down menus to "main" & "/(root)" - Click 'Save' - Refresh the pge and the link will be displayed at the top.
 
 # Testing
-** Tables of tests **
+![home Page Test](/docs/readme-images/home-page-test.png) 
+![login Page Test](/docs/readme-images/login-page-test.png)
+![registration Page Test](/docs/readme-images/registration-page-test.png)
+![overview Page Test](/docs/readme-images/overview-page-test.png)
 
+The Lighthouse testing was not as good as hoped on the prefeormance section. Due to time restraints I was not able to fix this. It was noted this was due to image size. Perhaps in futrue limit size of images user can upload. 
+![Lighthouse Test](/docs/readme-images/lighthouse-test.png)
+
+
+On the HTML Validator there is still one error I was unable to remove before submitting. However the site seems to work as expected. 
+![HTML Validator Test](/docs/readme-images/html-validator.png)
+
+All tests passed on css validator
+![CSS Validator Test](/docs/readme-images/css-validator.png)
 
 
 # Agile Methodologies
 Throughout the project I used an agile methodology using GitHub’s KanBan board to plan, manage and complete each milestone within the assignment. 
 
 
+# Technologies Used
+#### Languages
+* HTML5
+* CSS3
+* Python 
+
+
+#### Libraries and Frameworks
+* Django
+* Cloudinary
+* CrispyForms
+* Gunicorn
+* Psycopg2
+* Google Fonts
+* Bootstrap
+
+
+#### Tools
+* GitPod
+* GitHub
+* Git
+* Heroku
+* ElephantSQL
+* SQLite3
+* FontAwesome
+* Balsamiq
+* W3C Validator
+* W3C CSS Validator
+* Lighthouse
+* WhiteNoise
+
+
+# Future Features
+
+I would have like to have added confirmation of deleting a business before its deleted via a model. However due to time restraints this was not possible at this time. 
 
 
 
