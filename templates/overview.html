@@ -40,96 +40,90 @@
 <div class="business_list_container">
 <div id="business_list">
 {% for business in business_list %}
-
 {% if user.get_username == business.vendor.username or user.get_username == 'admin' %}
-
-    <div class="accordion">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="heading_{{ business.id }}">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{ business.id }}" aria-expanded="true" aria-controls="collapse_{{ business.id }}">
-            {{ business.business_name }}, {{ business.business_county }} - Price: £{{ business.price }}
-            </button>
-            </h2>
-            <div id="collapse_{{ business.id }}" class="accordion-collapse collapse " aria-labelledby="heading_{{ business.id }}" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <div class="row">
-                        <div class="col-sm-7">
-                            <img class="card-img-top"
-                            src=" {{ business.featured_image.url }}">
-                        </div>
-                        <div class="col-sm-5">
-                            <h3 id="business-name">{{ business.business_name }}</h3> 
-                            <form class="d-inline" action="{% url 'deletebusiness' business.id %}" method="POST">
-                                {% csrf_token %}
-
-                              </a>
-                                <button type="submit" name="blogpost_id" value="delete" class="btn-like"><i class="fa-solid fa-trash"></i></button>                            
-                            </form>
-
-                            <form class="d-inline" action="{% url 'businessupdate' business.id %}" method="GET">
+  <div class="accordion">
+      <div class="accordion-item">
+          <h2 class="accordion-header" id="heading_{{ business.id }}">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{ business.id }}" aria-expanded="true" aria-controls="collapse_{{ business.id }}">
+          {{ business.business_name }}, {{ business.business_county }} - Price: £{{ business.price }}
+          </button>
+          </h2>
+          <div id="collapse_{{ business.id }}" class="accordion-collapse collapse " aria-labelledby="heading_{{ business.id }}" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                  <div class="row">
+                      <div class="col-sm-7">
+                          <img class="card-img-top"
+                          src=" {{ business.featured_image.url }}">
+                      </div>
+                      <div class="col-sm-5">
+                          <h3 id="business-name">{{ business.business_name }}</h3> 
+                          <form class="d-inline" action="{% url 'deletebusiness' business.id %}" method="POST">
                               {% csrf_token %}
-                              <button type="submit" name="blogpost_id" value="delete" class="btn-like"><i class="fa-solid fa-pencil"></i></button>                            
+
+                            </a>
+                              <button type="submit" name="blogpost_id" value="delete" class="btn-like"><i class="fa-solid fa-trash"></i></button>                            
                           </form>
-                            
-                            <p>{{ business.business_address_line1 }}, {{ business.business_address_line2 }}, {{ business.business_county }}, {{ business.business_postcode }} </p>
-                            <h6> <i class="fa-solid fa-sack-dollar"></i> Weekly Takings: £{{ business.takings }}</h6>
-                            <h6> <i class="fa-solid fa-house"></i> Tenure: {{ business.tenure }}</h6>
-                            
-                            <h6>Is there a Ltd. Company? 
-                                {% if business.ltd_compnay %}
-                                <i class="fa-solid fa-check tick"></i>- {{ business.ltd_compnay_name }}
-                                {% else %}
-                                <i class="fa-solid fa-xmark cross"></i>
-                                {% endif %}
-                            </h6> 
-                            <h6>Delivery Service? 
-                              {% if business.deliveries %}
-                              <i class="fa-solid fa-check tick"></i>
+
+                          <form class="d-inline" action="{% url 'businessupdate' business.id %}" method="GET">
+                            {% csrf_token %}
+                            <button type="submit" name="blogpost_id" value="delete" class="btn-like"><i class="fa-solid fa-pencil"></i></button>                            
+                        </form>
+                          
+                          <p>{{ business.business_address_line1 }}, {{ business.business_address_line2 }}, {{ business.business_county }}, {{ business.business_postcode }} </p>
+                          <h6> <i class="fa-solid fa-sack-dollar"></i> Weekly Takings: £{{ business.takings }}</h6>
+                          <h6> <i class="fa-solid fa-house"></i> Tenure: {{ business.tenure }}</h6>
+                          
+                          <h6>Is there a Ltd. Company? 
+                              {% if business.ltd_compnay %}
+                              <i class="fa-solid fa-check tick"></i>- {{ business.ltd_compnay_name }}
                               {% else %}
                               <i class="fa-solid fa-xmark cross"></i>
                               {% endif %}
                           </h6> 
-                            <hr>
-                            <h6>Accomodation</h6>
-                                {% if business.accommodation %}
-                                <div id="accom-detail">
-                                <i class="fa-solid fa-bed"></i> {{ business.bedrooms }}
-                                <i class="fa-solid fa-bath"></i> {{ business.bathrooms }}
-                                </div>
-                                {% else %}
-                                <div id="accom-detail"><i class="fa-solid fa-xmark cross"></i>- None</div>
-                                {% endif %}
-                            <hr>
-                        </div>
-                        <div class="row">
-                          <div class="col-sm-6">
-                             <p> Date Established: {{ business.date_est }}</p>
-                          </div>
-                          <div class="col-sm-6">
-                            <p> Date in your ownership: {{ business.date_bought }}</p>
-                          <div>
-                         </div>
-                    </div>
-
-
-                        <div class="row">
-                            <div class="col-sm-6">
-                               <p> Menu summary:</p>
-                               <div class="text-area"> 
-                                {{ business.menu }}
+                          <h6>Delivery Service? 
+                            {% if business.deliveries %}
+                            <i class="fa-solid fa-check tick"></i>
+                            {% else %}
+                            <i class="fa-solid fa-xmark cross"></i>
+                            {% endif %}
+                        </h6> 
+                          <hr>
+                          <h6>Accomodation</h6>
+                              {% if business.accommodation %}
+                              <div id="accom-detail">
+                              <i class="fa-solid fa-bed"></i> {{ business.bedrooms }}
+                              <i class="fa-solid fa-bath"></i> {{ business.bathrooms }}
                               </div>
-                            </div>
-                            <div class="col-sm-6">
-                              <p> Equipment:</p>
-                              <div class="text-area"> 
-                               {{ business.equipment }}
-                             </div>
-                           </div>
+                              {% else %}
+                              <div id="accom-detail"><i class="fa-solid fa-xmark cross"></i>- None</div>
+                              {% endif %}
+                          <hr>
                       </div>
-
-                 
-                </div>
-            </div>
+                      <div class="row">
+                        <div class="col-sm-6">
+                            <p> Date Established: {{ business.date_est }}</p>
+                        </div>
+                        <div class="col-sm-6">
+                          <p> Date in your ownership: {{ business.date_bought }}</p>
+                        <div>
+                        </div>
+                  </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p> Menu summary:</p>
+                            <div class="text-area"> 
+                            {{ business.menu }}
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <p> Equipment:</p>
+                          <div class="text-area"> 
+                            {{ business.equipment }}
+                          </div>
+                        </div>
+                    </div>                 
+              </div>
+          </div>
     </div>
 </div>
 {% endif %}
@@ -137,29 +131,8 @@
 
 <div><a class="btn btn-light full-width" href="{% url 'businessinput' %}"><i class="fa-solid fa-plus"></i> Add a new Business</a></div>
 
-
-
-<!-- Delete Modal -->
-<div id="deleteModal" class="modal">
-
-  <!-- Delete Modal Content -->
-  <div class="delete-modal-content">
-    <h3>Are you sure you want to delete?</h3>
-    <a class="button" href="game.html">Play Again</a>
-  </div>
-</div>
-
-
-
 <script src="https://kit.fontawesome.com/ec4c8d1bc4.js" crossorigin="anonymous"></script>
-<script>
-    function deleteBusiness() { 
-        fetch('/vendorinput/') 
-            .then(response => response.json()) 
-            .then(data => console.log(data)) 
-            .catch(error => console.error(error)); 
-    } 
-</script>
+
 </div>
 
 
